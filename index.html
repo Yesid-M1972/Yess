@@ -1,1 +1,1305 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yess I Can - Fitness & Nutrition Coaching</title>
+    <style>
+        :root {
+            --primary-orange: #FF6B35;
+            --primary-green: #8BC34A;
+            --dark-gray: #2C3E50;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary-orange), var(--primary-green));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+
+        .language-selector {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-orange);
+            border-radius: 25px;
+            background: none;
+            color: var(--primary-orange);
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Landing Page */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary-orange);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Forms */
+        .form-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-button {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            padding: 2rem 0;
+        }
+
+        .dashboard-header {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .user-welcome {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Calendar */
+        .calendar-container {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-nav {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #E0E0E0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .calendar-day {
+            background: var(--white);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .calendar-day:hover {
+            background: var(--light-gray);
+        }
+
+        .calendar-day.today {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .calendar-day.has-plan {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Exercise Animation */
+        .exercise-demo {
+            width: 100px;
+            height: 100px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exercise-figure {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-orange);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: exercise-movement 2s ease-in-out infinite;
+        }
+
+        @keyframes exercise-movement {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        /* Plan Cards */
+        .plan-section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .plan-item {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--primary-orange);
+        }
+
+        .exercise-item {
+            border-left-color: var(--primary-green);
+        }
+
+        .meal-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 10px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nutrition-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .nutrition-stat {
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--white);
+            border-radius: 5px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 1rem;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Hidden sections */
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid var(--light-gray);
+            border-top: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <div class="logo-icon">YIC</div>
+                <span>Yess I Can</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="showSection('landing')">Inicio</a>
+                <a href="#" class="nav-link" onclick="showSection('about')">Acerca</a>
+                <a href="#" class="nav-link" onclick="showSection('login')" id="loginLink">Acceder</a>
+                <a href="#" class="nav-link hidden" onclick="logout()" id="logoutLink">Cerrar Sesión</a>
+                <button class="language-selector" onclick="toggleLanguage()">
+                    <span id="currentLang">ES</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Landing Section -->
+        <section id="landing" class="section">
+            <div class="hero">
+                <div class="container">
+                    <h1 data-translate="hero.title">Transforma Tu Vida con IA</h1>
+                    <p data-translate="hero.subtitle">Planes personalizados de fitness y nutrición generados por inteligencia artificial, diseñados específicamente para tus objetivos y estilo de vida.</p>
+                    <button class="cta-button" onclick="showSection('register')" data-translate="hero.cta">Comenzar Ahora</button>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 2rem;" data-translate="features.title">¿Por Qué Elegir Yess I Can?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3 data-translate="features.ai.title">IA Avanzada</h3>
+                            <p data-translate="features.ai.description">Algoritmos de inteligencia artificial que analizan tus datos para crear planes únicos y efectivos.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🏋️</div>
+                            <h3 data-translate="features.workout.title">Rutinas Personalizadas</h3>
+                            <p data-translate="features.workout.description">Ejercicios adaptados a tu nivel, objetivos y disponibilidad de tiempo.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🥗</div>
+                            <h3 data-translate="features.nutrition.title">Nutrición Inteligente</h3>
+                            <p data-translate="features.nutrition.description">Planes alimentarios balanceados con recetas detalladas y valores nutricionales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login" class="section hidden">
+            <div class="container">
+                <div class="form-container">
+                    <h2 style="text-align: center; margin-bottom: 2rem;" data-translate="login.title">Iniciar Sesión</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label data-translate="login.email">Correo Electrónico</label>
+                            <input type="email" id="loginEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="login.password">Contraseña</label>
+                            <input type="password" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="submit-button" data-translate="login.submit">Iniciar Sesión</button>
+                    </form>
+                    <p style="text-align: center; margin-top: 1rem;">
+                        <span data-translate="login.noAccount">¿No tienes cuenta?</span>
+                        <a href="#" onclick="showSection('register')" style="color: var(--primary-orange);" data-translate="login.register">Regístrate aquí</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Register Section -->
+        <section id="register" class="section hidden">
+            <div class="container">
+                <div class="form-container">
+                    <h2 style="text-align: center; margin-bottom: 2rem;" data-translate="register.title">Crear Cuenta</h2>
+                    <form id="registerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="register.firstName">Nombre</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="register.lastName">Apellido</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="register.email">Correo Electrónico</label>
+                            <input type="email" id="registerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="register.password">Contraseña</label>
+                            <input type="password" id="registerPassword" required>
+                        </div>
+                        <button type="submit" class="submit-button" data-translate="register.submit">Crear Cuenta</button>
+                    </form>
+                    <p style="text-align: center; margin-top: 1rem;">
+                        <span data-translate="register.hasAccount">¿Ya tienes cuenta?</span>
+                        <a href="#" onclick="showSection('login')" style="color: var(--primary-orange);" data-translate="register.login">Inicia sesión aquí</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Form -->
+        <section id="assessment" class="section hidden">
+            <div class="container">
+                <div class="form-container">
+                    <h2 style="text-align: center; margin-bottom: 2rem;" data-translate="assessment.title">Evaluación Inicial</h2>
+                    <p style="text-align: center; margin-bottom: 2rem; color: #666;" data-translate="assessment.subtitle">Proporciona información para crear tu plan personalizado</p>
+                    
+                    <form id="assessmentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="assessment.age">Edad</label>
+                                <input type="number" id="age" min="16" max="80" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="assessment.gender">Género</label>
+                                <select id="gender" required>
+                                    <option value="" data-translate="assessment.selectGender">Seleccionar...</option>
+                                    <option value="male" data-translate="assessment.male">Masculino</option>
+                                    <option value="female" data-translate="assessment.female">Femenino</option>
+                                    <option value="other" data-translate="assessment.other">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="assessment.height">Altura (cm)</label>
+                                <input type="number" id="height" min="140" max="220" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="assessment.weight">Peso Actual (kg)</label>
+                                <input type="number" id="weight" min="40" max="200" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.goalWeight">Peso Objetivo (kg)</label>
+                            <input type="number" id="goalWeight" min="40" max="200" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.fitnessGoal">Objetivo Principal</label>
+                            <select id="fitnessGoal" required>
+                                <option value="" data-translate="assessment.selectGoal">Seleccionar objetivo...</option>
+                                <option value="lose_weight" data-translate="assessment.loseWeight">Perder Peso</option>
+                                <option value="gain_muscle" data-translate="assessment.gainMuscle">Ganar Músculo</option>
+                                <option value="maintain" data-translate="assessment.maintain">Mantener Peso</option>
+                                <option value="improve_fitness" data-translate="assessment.improveFitness">Mejorar Condición Física</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.activityLevel">Nivel de Actividad Actual</label>
+                            <select id="activityLevel" required>
+                                <option value="" data-translate="assessment.selectActivity">Seleccionar nivel...</option>
+                                <option value="sedentary" data-translate="assessment.sedentary">Sedentario (poco o ningún ejercicio)</option>
+                                <option value="light" data-translate="assessment.light">Ligero (ejercicio ligero 1-3 días/semana)</option>
+                                <option value="moderate" data-translate="assessment.moderate">Moderado (ejercicio moderado 3-5 días/semana)</option>
+                                <option value="active" data-translate="assessment.active">Activo (ejercicio intenso 6-7 días/semana)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.workoutTime">Tiempo Disponible para Ejercicio (minutos/día)</label>
+                            <select id="workoutTime" required>
+                                <option value="" data-translate="assessment.selectTime">Seleccionar tiempo...</option>
+                                <option value="15-30">15-30 minutos</option>
+                                <option value="30-45">30-45 minutos</option>
+                                <option value="45-60">45-60 minutos</option>
+                                <option value="60+">Más de 60 minutos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.allergies">Alergias o Restricciones Alimentarias</label>
+                            <textarea id="allergies" rows="3" placeholder="Ej: Alérgico a frutos secos, vegetariano, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-translate="assessment.medicalConditions">Condiciones Médicas o Lesiones</label>
+                            <textarea id="medicalConditions" rows="3" placeholder="Información médica relevante que debamos considerar"></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button" data-translate="assessment.submit">Generar Mi Plan Personalizado</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section id="loading" class="section hidden">
+            <div class="container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <h2 style="margin-top: 1rem;" data-translate="loading.title">Generando Tu Plan Personalizado</h2>
+                    <p data-translate="loading.message">Nuestro sistema de IA está creando un plan único para ti...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section hidden">
+            <div class="container dashboard">
+                <div class="dashboard-header">
+                    <div class="user-welcome">
+                        <div>
+                            <h2 data-translate="dashboard.welcome">¡Bienvenido de vuelta!</h2>
+                            <p id="userName" style="color: #666; font-size: 1.1rem;"></p>
+                        </div>
+                        <button class="cta-button" onclick="showSection('today-plan')" data-translate="dashboard.todayPlan">Ver Plan de Hoy</button>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat-card">
+                            <span class="stat-number" id="daysActive">0</span>
+                            <span data-translate="dashboard.daysActive">Días Activo</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="workoutsCompleted">0</span>
+                            <span data-translate="dashboard.workouts">Entrenamientos</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number" id="weightProgress">0kg</span>
+                            <span data-translate="dashboard.progress">Progreso</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <h3 data-translate="calendar.title">Plan Mensual</h3>
+                        <div>
+                            <button class="calendar-nav" onclick="changeMonth(-1)">‹</button>
+                            <span id="currentMonth" style="margin: 0 1rem; font-weight: bold;"></span>
+                            <button class="calendar-nav" onclick="changeMonth(1)">›</button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid" id="calendar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Today's Plan Section -->
+        <section id="today-plan" class="section hidden">
+            <div class="container">
+                <div style="margin-bottom: 2rem;">
+                    <button onclick="showSection('dashboard')" style="background: none; border: none; color: var(--primary-orange); font-size: 1rem; cursor: pointer;">‹ Volver al Dashboard</button>
+                </div>
+
+                <div class="plan-section">
+                    <h2 data-translate="todayPlan.workout">Entrenamiento de Hoy</h2>
+                    <div id="todayWorkout"></div>
+                </div>
+
+                <div class="plan-section">
+                    <h2 data-translate="todayPlan.nutrition">Plan Nutricional de Hoy</h2>
+                    <div id="todayNutrition"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentLanguage = 'es';
+        let currentDate = new Date();
+        let userPlans = {};
+
+        // Translation dictionary
+        const translations = {
+            es: {
+                'hero.title': 'Transforma Tu Vida con IA',
+                'hero.subtitle': 'Planes personalizados de fitness y nutrición generados por inteligencia artificial, diseñados específicamente para tus objetivos y estilo de vida.',
+                'hero.cta': 'Comenzar Ahora',
+                'features.title': '¿Por Qué Elegir Yess I Can?',
+                'features.ai.title': 'IA Avanzada',
+                'features.ai.description': 'Algoritmos de inteligencia artificial que analizan tus datos para crear planes únicos y efectivos.',
+                'features.workout.title': 'Rutinas Personalizadas',
+                'features.workout.description': 'Ejercicios adaptados a tu nivel, objetivos y disponibilidad de tiempo.',
+                'features.nutrition.title': 'Nutrición Inteligente',
+                'features.nutrition.description': 'Planes alimentarios balanceados con recetas detalladas y valores nutricionales.',
+                'login.title': 'Iniciar Sesión',
+                'login.email': 'Correo Electrónico',
+                'login.password': 'Contraseña',
+                'login.submit': 'Iniciar Sesión',
+                'login.noAccount': '¿No tienes cuenta?',
+                'login.register': 'Regístrate aquí',
+                'register.title': 'Crear Cuenta',
+                'register.firstName': 'Nombre',
+                'register.lastName': 'Apellido',
+                'register.email': 'Correo Electrónico',
+                'register.password': 'Contraseña',
+                'register.submit': 'Crear Cuenta',
+                'register.hasAccount': '¿Ya tienes cuenta?',
+                'register.login': 'Inicia sesión aquí',
+                'assessment.title': 'Evaluación Inicial',
+                'assessment.subtitle': 'Proporciona información para crear tu plan personalizado',
+                'assessment.age': 'Edad',
+                'assessment.gender': 'Género',
+                'assessment.selectGender': 'Seleccionar...',
+                'assessment.male': 'Masculino',
+                'assessment.female': 'Femenino',
+                'assessment.other': 'Otro',
+                'assessment.height': 'Altura (cm)',
+                'assessment.weight': 'Peso Actual (kg)',
+                'assessment.goalWeight': 'Peso Objetivo (kg)',
+                'assessment.fitnessGoal': 'Objetivo Principal',
+                'assessment.selectGoal': 'Seleccionar objetivo...',
+                'assessment.loseWeight': 'Perder Peso',
+                'assessment.gainMuscle': 'Ganar Músculo',
+                'assessment.maintain': 'Mantener Peso',
+                'assessment.improveFitness': 'Mejorar Condición Física',
+                'assessment.activityLevel': 'Nivel de Actividad Actual',
+                'assessment.selectActivity': 'Seleccionar nivel...',
+                'assessment.sedentary': 'Sedentario (poco o ningún ejercicio)',
+                'assessment.light': 'Ligero (ejercicio ligero 1-3 días/semana)',
+                'assessment.moderate': 'Moderado (ejercicio moderado 3-5 días/semana)',
+                'assessment.active': 'Activo (ejercicio intenso 6-7 días/semana)',
+                'assessment.workoutTime': 'Tiempo Disponible para Ejercicio (minutos/día)',
+                'assessment.selectTime': 'Seleccionar tiempo...',
+                'assessment.allergies': 'Alergias o Restricciones Alimentarias',
+                'assessment.medicalConditions': 'Condiciones Médicas o Lesiones',
+                'assessment.submit': 'Generar Mi Plan Personalizado',
+                'loading.title': 'Generando Tu Plan Personalizado',
+                'loading.message': 'Nuestro sistema de IA está creando un plan único para ti...',
+                'dashboard.welcome': '¡Bienvenido de vuelta!',
+                'dashboard.todayPlan': 'Ver Plan de Hoy',
+                'dashboard.daysActive': 'Días Activo',
+                'dashboard.workouts': 'Entrenamientos',
+                'dashboard.progress': 'Progreso',
+                'calendar.title': 'Plan Mensual',
+                'todayPlan.workout': 'Entrenamiento de Hoy',
+                'todayPlan.nutrition': 'Plan Nutricional de Hoy'
+            },
+            en: {
+                'hero.title': 'Transform Your Life with AI',
+                'hero.subtitle': 'AI-generated personalized fitness and nutrition plans, designed specifically for your goals and lifestyle.',
+                'hero.cta': 'Start Now',
+                'features.title': 'Why Choose Yess I Can?',
+                'features.ai.title': 'Advanced AI',
+                'features.ai.description': 'Artificial intelligence algorithms that analyze your data to create unique and effective plans.',
+                'features.workout.title': 'Personalized Routines',
+                'features.workout.description': 'Exercises adapted to your level, goals and time availability.',
+                'features.nutrition.title': 'Smart Nutrition',
+                'features.nutrition.description': 'Balanced meal plans with detailed recipes and nutritional values.',
+                'login.title': 'Login',
+                'login.email': 'Email',
+                'login.password': 'Password',
+                'login.submit': 'Login',
+                'login.noAccount': "Don't have an account?",
+                'login.register': 'Register here',
+                'register.title': 'Create Account',
+                'register.firstName': 'First Name',
+                'register.lastName': 'Last Name',
+                'register.email': 'Email',
+                'register.password': 'Password',
+                'register.submit': 'Create Account',
+                'register.hasAccount': 'Already have an account?',
+                'register.login': 'Login here',
+                'assessment.title': 'Initial Assessment',
+                'assessment.subtitle': 'Provide information to create your personalized plan',
+                'assessment.age': 'Age',
+                'assessment.gender': 'Gender',
+                'assessment.selectGender': 'Select...',
+                'assessment.male': 'Male',
+                'assessment.female': 'Female',
+                'assessment.other': 'Other',
+                'assessment.height': 'Height (cm)',
+                'assessment.weight': 'Current Weight (kg)',
+                'assessment.goalWeight': 'Goal Weight (kg)',
+                'assessment.fitnessGoal': 'Main Goal',
+                'assessment.selectGoal': 'Select goal...',
+                'assessment.loseWeight': 'Lose Weight',
+                'assessment.gainMuscle': 'Gain Muscle',
+                'assessment.maintain': 'Maintain Weight',
+                'assessment.improveFitness': 'Improve Fitness',
+                'assessment.activityLevel': 'Current Activity Level',
+                'assessment.selectActivity': 'Select level...',
+                'assessment.sedentary': 'Sedentary (little or no exercise)',
+                'assessment.light': 'Light (light exercise 1-3 days/week)',
+                'assessment.moderate': 'Moderate (moderate exercise 3-5 days/week)',
+                'assessment.active': 'Active (intense exercise 6-7 days/week)',
+                'assessment.workoutTime': 'Available Exercise Time (minutes/day)',
+                'assessment.selectTime': 'Select time...',
+                'assessment.allergies': 'Allergies or Dietary Restrictions',
+                'assessment.medicalConditions': 'Medical Conditions or Injuries',
+                'assessment.submit': 'Generate My Personalized Plan',
+                'loading.title': 'Generating Your Personalized Plan',
+                'loading.message': 'Our AI system is creating a unique plan for you...',
+                'dashboard.welcome': 'Welcome back!',
+                'dashboard.todayPlan': "View Today's Plan",
+                'dashboard.daysActive': 'Active Days',
+                'dashboard.workouts': 'Workouts',
+                'dashboard.progress': 'Progress',
+                'calendar.title': 'Monthly Plan',
+                'todayPlan.workout': "Today's Workout",
+                'todayPlan.nutrition': "Today's Nutrition Plan"
+            }
+        };
+
+        // Users database (in-memory for MVP)
+        const users = new Map();
+
+        // Sample AI-generated plans
+        const samplePlans = {
+            workout: {
+                exercises: [
+                    {
+                        name: "Push-ups",
+                        sets: 3,
+                        reps: "12-15",
+                        description: "Mantén el cuerpo recto, baja hasta que el pecho casi toque el suelo",
+                        tips: "Mantén el core activado durante todo el movimiento",
+                        muscleGroups: ["Pecho", "Tríceps", "Hombros"]
+                    },
+                    {
+                        name: "Squats",
+                        sets: 3,
+                        reps: "15-20",
+                        description: "Baja como si te fueras a sentar en una silla, mantén el peso en los talones",
+                        tips: "No dejes que las rodillas se vayan hacia adentro",
+                        muscleGroups: ["Cuádriceps", "Glúteos", "Core"]
+                    },
+                    {
+                        name: "Plank",
+                        sets: 3,
+                        reps: "30-60 segundos",
+                        description: "Mantén el cuerpo recto como una tabla desde la cabeza hasta los pies",
+                        tips: "Respira normalmente, no contengas la respiración",
+                        muscleGroups: ["Core", "Hombros"]
+                    }
+                ]
+            },
+            nutrition: {
+                meals: [
+                    {
+                        name: "Desayuno Energético",
+                        ingredients: ["2 huevos", "1 rebanada pan integral", "1/2 aguacate", "tomate cherry"],
+                        instructions: "Revuelve los huevos, tuesta el pan, agrega aguacate y tomates",
+                        calories: 420,
+                        protein: 22,
+                        carbs: 28,
+                        fat: 24,
+                        time: "10 minutos"
+                    },
+                    {
+                        name: "Almuerzo Balanceado",
+                        ingredients: ["150g pollo", "1 taza arroz integral", "verduras mixtas", "aceite oliva"],
+                        instructions: "Cocina el pollo a la plancha, acompaña con arroz y verduras salteadas",
+                        calories: 580,
+                        protein: 45,
+                        carbs: 52,
+                        fat: 18,
+                        time: "25 minutos"
+                    },
+                    {
+                        name: "Cena Ligera",
+                        ingredients: ["150g salmón", "espárragos", "quinoa", "limón"],
+                        instructions: "Salmón al horno con espárragos, acompaña con quinoa",
+                        calories: 450,
+                        protein: 35,
+                        carbs: 32,
+                        fat: 20,
+                        time: "20 minutos"
+                    }
+                ]
+            }
+        };
+
+        // Utility functions
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function translate(key) {
+            return translations[currentLanguage][key] || key;
+        }
+
+        function updateTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translate(key);
+            });
+        }
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            document.getElementById('currentLang').textContent = currentLanguage.toUpperCase();
+            updateTranslations();
+        }
+
+        function generateCalendar() {
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = '';
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update month display
+            const monthNames = currentLanguage === 'es' 
+                ? ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+                : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            
+            // Add day headers
+            const dayHeaders = currentLanguage === 'es' 
+                ? ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
+                : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            dayHeaders.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day';
+                dayHeader.style.fontWeight = 'bold';
+                dayHeader.style.background = 'var(--primary-orange)';
+                dayHeader.style.color = 'white';
+                dayHeader.textContent = day;
+                calendar.appendChild(dayHeader);
+            });
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day';
+                emptyDay.style.background = '#f0f0f0';
+                calendar.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                const dayDate = new Date(year, month, day);
+                const isToday = dayDate.toDateString() === today.toDateString();
+                const hasPlan = currentUser && day <= today.getDate(); // Assume plans exist for past and current days
+                
+                if (isToday) {
+                    dayElement.classList.add('today');
+                } else if (hasPlan) {
+                    dayElement.classList.add('has-plan');
+                }
+                
+                dayElement.onclick = () => {
+                    if (hasPlan || isToday) {
+                        showSection('today-plan');
+                        loadTodayPlan();
+                    }
+                };
+                
+                calendar.appendChild(dayElement);
+            }
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            generateCalendar();
+        }
+
+        function loadTodayPlan() {
+            const workoutContainer = document.getElementById('todayWorkout');
+            const nutritionContainer = document.getElementById('todayNutrition');
+            
+            // Load workout plan
+            workoutContainer.innerHTML = '';
+            samplePlans.workout.exercises.forEach(exercise => {
+                const exerciseElement = document.createElement('div');
+                exerciseElement.className = 'plan-item exercise-item';
+                exerciseElement.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="exercise-demo">
+                            <div class="exercise-figure"></div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3>${exercise.name}</h3>
+                            <p><strong>Series:</strong> ${exercise.sets} | <strong>Repeticiones:</strong> ${exercise.reps}</p>
+                            <p>${exercise.description}</p>
+                            <p style="color: var(--primary-green); font-weight: 500;"><strong>Consejo:</strong> ${exercise.tips}</p>
+                            <p><strong>Músculos:</strong> ${exercise.muscleGroups.join(', ')}</p>
+                        </div>
+                    </div>
+                `;
+                workoutContainer.appendChild(exerciseElement);
+            });
+            
+            // Load nutrition plan
+            nutritionContainer.innerHTML = '';
+            samplePlans.nutrition.meals.forEach(meal => {
+                const mealElement = document.createElement('div');
+                mealElement.className = 'plan-item';
+                mealElement.innerHTML = `
+                    <h3>${meal.name}</h3>
+                    <div class="meal-image">📸 Imagen de ${meal.name}</div>
+                    <p><strong>Ingredientes:</strong> ${meal.ingredients.join(', ')}</p>
+                    <p><strong>Preparación:</strong> ${meal.instructions}</p>
+                    <p><strong>Tiempo:</strong> ${meal.time}</p>
+                    <div class="nutrition-info">
+                        <div class="nutrition-stat">
+                            <strong>${meal.calories}</strong><br>Calorías
+                        </div>
+                        <div class="nutrition-stat">
+                            <strong>${meal.protein}g</strong><br>Proteína
+                        </div>
+                        <div class="nutrition-stat">
+                            <strong>${meal.carbs}g</strong><br>Carbohidratos
+                        </div>
+                        <div class="nutrition-stat">
+                            <strong>${meal.fat}g</strong><br>Grasas
+                        </div>
+                    </div>
+                `;
+                nutritionContainer.appendChild(mealElement);
+            });
+        }
+
+        function updateUserStats() {
+            if (currentUser) {
+                const stats = currentUser.stats || { daysActive: 0, workoutsCompleted: 0, weightProgress: 0 };
+                document.getElementById('daysActive').textContent = stats.daysActive;
+                document.getElementById('workoutsCompleted').textContent = stats.workoutsCompleted;
+                document.getElementById('weightProgress').textContent = `${stats.weightProgress}kg`;
+            }
+        }
+
+        function simulateAIGeneration(userData) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Simulate AI processing and return personalized plan
+                    const personalizedPlan = {
+                        workout: {
+                            ...samplePlans.workout,
+                            personalizedNote: `Plan diseñado específicamente para ${userData.fitnessGoal} con ${userData.workoutTime} disponibles por día.`
+                        },
+                        nutrition: {
+                            ...samplePlans.nutrition,
+                            personalizedNote: `Plan nutricional personalizado considerando tus restricciones: ${userData.allergies || 'Ninguna'}`
+                        }
+                    };
+                    resolve(personalizedPlan);
+                }, 3000); // 3 second delay to simulate AI processing
+            });
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('loginLink').classList.remove('hidden');
+            document.getElementById('logoutLink').classList.add('hidden');
+            showSection('landing');
+        }
+
+        // Event Listeners
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const user = users.get(email);
+            if (user && user.password === password) {
+                currentUser = user;
+                document.getElementById('userName').textContent = `${user.firstName} ${user.lastName}`;
+                document.getElementById('loginLink').classList.add('hidden');
+                document.getElementById('logoutLink').classList.remove('hidden');
+                
+                if (user.hasCompletedAssessment) {
+                    showSection('dashboard');
+                    generateCalendar();
+                    updateUserStats();
+                } else {
+                    showSection('assessment');
+                }
+            } else {
+                alert(currentLanguage === 'es' ? 'Credenciales incorrectas' : 'Invalid credentials');
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('registerEmail').value,
+                password: document.getElementById('registerPassword').value,
+                hasCompletedAssessment: false,
+                stats: { daysActive: 0, workoutsCompleted: 0, weightProgress: 0 }
+            };
+            
+            if (users.has(userData.email)) {
+                alert(currentLanguage === 'es' ? 'El usuario ya existe' : 'User already exists');
+                return;
+            }
+            
+            users.set(userData.email, userData);
+            currentUser = userData;
+            document.getElementById('userName').textContent = `${userData.firstName} ${userData.lastName}`;
+            document.getElementById('loginLink').classList.add('hidden');
+            document.getElementById('logoutLink').classList.remove('hidden');
+            showSection('assessment');
+        });
+
+        document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const assessmentData = {
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                goalWeight: document.getElementById('goalWeight').value,
+                fitnessGoal: document.getElementById('fitnessGoal').value,
+                activityLevel: document.getElementById('activityLevel').value,
+                workoutTime: document.getElementById('workoutTime').value,
+                allergies: document.getElementById('allergies').value,
+                medicalConditions: document.getElementById('medicalConditions').value
+            };
+            
+            // Update user data
+            if (currentUser) {
+                currentUser.assessmentData = assessmentData;
+                currentUser.hasCompletedAssessment = true;
+                users.set(currentUser.email, currentUser);
+            }
+            
+            showSection('loading');
+            
+            try {
+                // In a real implementation, this would call your OpenAI API
+                // const plan = await generatePlanWithOpenAI(assessmentData);
+                const plan = await simulateAIGeneration(assessmentData);
+                
+                if (currentUser) {
+                    currentUser.plan = plan;
+                    users.set(currentUser.email, currentUser);
+                }
+                
+                showSection('dashboard');
+                generateCalendar();
+                updateUserStats();
+            } catch (error) {
+                console.error('Error generating plan:', error);
+                alert(currentLanguage === 'es' ? 'Error generando el plan' : 'Error generating plan');
+                showSection('assessment');
+            }
+        });
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('landing');
+            updateTranslations();
+        });
+
+        // This function would integrate with your OpenAI API
+        async function generatePlanWithOpenAI(assessmentData) {
+            const apiKey = 'your-openai-api-key'; // You would need to implement secure API key management
+            
+            const prompt = `Generate a comprehensive fitness and nutrition plan for a person with the following characteristics:
+            - Age: ${assessmentData.age}
+            - Gender: ${assessmentData.gender}
+            - Height: ${assessmentData.height}cm
+            - Current Weight: ${assessmentData.weight}kg
+            - Goal Weight: ${assessmentData.goalWeight}kg
+            - Fitness Goal: ${assessmentData.fitnessGoal}
+            - Activity Level: ${assessmentData.activityLevel}
+            - Available Time: ${assessmentData.workoutTime}
+            - Allergies/Restrictions: ${assessmentData.allergies}
+            - Medical Conditions: ${assessmentData.medicalConditions}
+            
+            Please provide a detailed monthly plan with specific exercises (including sets, reps, descriptions, and tips) and nutritional meals (with ingredients, instructions, and nutritional values).`;
+            
+            // This would be your actual OpenAI API call
+            /*
+            const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: 'gpt-4',
+                    messages: [{ role: 'user', content: prompt }],
+                    max_tokens: 2000
+                })
+            });
+            
+            const data = await response.json();
+            return JSON.parse(data.choices[0].message.content);
+            */
+            
+            // For now, return simulated data
+            return simulateAIGeneration(assessmentData);
+        }
+    </script>
+</body>
+</html>
